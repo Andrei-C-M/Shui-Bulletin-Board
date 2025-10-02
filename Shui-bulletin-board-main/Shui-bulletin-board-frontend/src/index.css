@@ -1,0 +1,282 @@
+
+/* ---------- Base theme & reset ---------- */
+:root{
+  --bg: #ffffff;
+  --text: #111111;
+  --muted: #666666;
+  --border: #e5e7eb;
+  --card: #ffffff;
+  --accent: #2563eb;     /* blue */
+  --accent-contrast: #ffffff;
+  --danger: #dc2626;
+
+  --radius: 12px;
+  --shadow: 0 6px 20px rgba(0,0,0,0.06);
+  --font: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- Page layout ---------- */
+.page {
+  max-width: 900px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.feed {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* ---------- Card (MsgCard) ---------- */
+.msg-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px 18px;
+}
+
+.msg-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.msg-meta strong {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.msg-date {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.msg-text {
+  margin: 0;
+  color: var(--text);
+  white-space: pre-wrap; /* keep line breaks */
+  word-wrap: break-word;
+}
+
+/* ---------- Buttons & links that look like buttons ---------- */
+.btn,
+a.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.05s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 4px 14px rgba(37,99,235,0.25);
+}
+
+.btn:hover,
+a.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn.secondary {
+  background: #f3f4f6;
+  color: #111;
+  border-color: var(--border);
+  box-shadow: none;
+}
+
+/* ---------- Forms ---------- */
+form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #f9fafb;           
+  color: var(--text);            
+  outline: none;
+  font-size: 1rem;
+}
+
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: #636363;                
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  background: #fff;              
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+}
+
+textarea { min-height: 120px; resize: vertical; }
+
+/* ---------- Utility ---------- */
+.muted { color: var(--muted); }
+.center { text-align: center; }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0b0c;
+    --text: #f1f5f9;
+    --muted: #a3a3a3;
+    --border: #1f2937;
+    --card: #121316;
+    --accent: #3b82f6;
+    --accent-contrast: #0b0b0c;
+    --shadow: 0 6px 20px rgba(0,0,0,0.4);
+  }
+  a { color: #93c5fd; }
+  .btn, a.btn { color: #0b0b0c; }
+}
+
+
+/* Make typed text clearly visible */
+input, textarea, input[type="text"], .page input, .page textarea {
+  background-color: #ffffff !important;
+  color: #111111 !important;
+  caret-color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important; /* Chrome/Safari */
+  border: 1px solid #d1d5db !important;        /* light gray border */
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+/* Focus state with clear outline */
+input:focus, textarea:focus {
+  outline: none !important;
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15) !important;
+  background-color: #ffffff !important;
+}
+
+/* Placeholders should be lighter than real text */
+input::placeholder, textarea::placeholder {
+  color: #9ca3af !important;
+  opacity: 1 !important;
+}
+
+/* Kill any accidental transparency/filters */
+input, textarea {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* Tame Chrome/Safari autofill yellow + force text color */
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #111111 !important;
+}
+
+/* Optional: dark mode safety */
+@media (prefers-color-scheme: dark) {
+  input, textarea, input[type="text"], .page input, .page textarea {
+    background-color: #111827 !important;   /* dark slate */
+    border-color: #374151 !important;
+    color: #f3f4f6 !important;
+    -webkit-text-fill-color: #f3f4f6 !important;
+    caret-color: #f3f4f6 !important;
+  }
+  input:-webkit-autofill,
+  textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #111827 inset !important;
+    box-shadow: 0 0 0 1000px #111827 inset !important;
+    -webkit-text-fill-color: #f3f4f6 !important;
+  }
+}
+
+/* ===== FINAL OVERRIDES: keep typed text visible in all states ===== */
+
+/* Base + Focus (same look) */
+.page input,
+.page textarea,
+.page input:focus,
+.page textarea:focus,
+input,
+textarea,
+input:focus,
+textarea:focus {
+  background-color: #ffffff !important;     /* white bg, always */
+  color: #111111 !important;                /* dark text, always */
+  -webkit-text-fill-color: #111111 !important;  /* Safari/Chrome */
+  caret-color: #111111 !important;
+
+  border: 1px solid #d1d5db !important;     /* neutral border */
+  box-shadow: none !important;              /* remove blue glow */
+  outline: none !important;
+
+  text-shadow: none !important;             /* prevent “invisible” text via blends */
+  mix-blend-mode: normal !important;
+  filter: none !important;
+  opacity: 1 !important;
+
+  font-size: 1rem !important;               /* avoid 0px issues */
+  text-indent: 0 !important;                /* avoid off-screen text */
+}
+
+/* Placeholder stays lighter than real text */
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af !important;
+  opacity: 1 !important;
+}
+
+/* Kill autofill styling */
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #111111 !important;
+}
+
+/* Optional: dark mode */
+@media (prefers-color-scheme: dark) {
+  .page input,
+  .page textarea,
+  .page input:focus,
+  .page textarea:focus,
+  input,
+  textarea,
+  input:focus,
+  textarea:focus {
+    background-color: #111827 !important;
+    color: #f3f4f6 !important;
+    -webkit-text-fill-color: #f3f4f6 !important;
+    border-color: #374151 !important;
+  }
+  input:-webkit-autofill,
+  textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #111827 inset !important;
+    box-shadow: 0 0 0 1000px #111827 inset !important;
+    -webkit-text-fill-color: #f3f4f6 !important;
+  }
+}

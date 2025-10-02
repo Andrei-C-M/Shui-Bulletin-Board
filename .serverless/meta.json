@@ -1,0 +1,27 @@
+{
+  "unknown": {
+    "versionFramework": "4.19.1",
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "command": [
+      "login"
+    ],
+    "options": {},
+    "orgId": "25e8ecaa-9152-46be-b914-9c31b7f8d151",
+    "orgName": "aws1andrei",
+    "userId": "d3nBFlbpsxM3CR8xtp",
+    "userName": "aws1andrei",
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  }
+}
